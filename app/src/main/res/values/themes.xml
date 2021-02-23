@@ -32,5 +32,11 @@
     </style>
 
 
+    <style name="RedProgressBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/red_900</item>
+        <item name="colorPrimaryDark">@color/red_900</item>
+        <item name="colorAccent">@color/red_900</item>
+    </style>
 
 </resources>

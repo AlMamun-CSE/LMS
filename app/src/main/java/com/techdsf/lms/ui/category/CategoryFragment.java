@@ -1,4 +1,4 @@
-package com.techdsf.lms.ui.dashboard;
+package com.techdsf.lms.ui.category;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.techdsf.lms.R;
 
-public class DashboardFragment extends Fragment {
+public class CategoryFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private CategoryViewModel categoryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        categoryViewModel =
+                new ViewModelProvider(this).get(CategoryViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_category, container, false);
+        final TextView textView = root.findViewById(R.id.text_category);
+        categoryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

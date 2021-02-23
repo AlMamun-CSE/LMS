@@ -31,9 +31,12 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //This method will be executed once the timer is over
-                Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
-                startActivity(i);
-                finish();
+                FirebaseUser currentUser=firebaseAuth.getCurrentUser();
+                if (currentUser==null){
+                    Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         }, 7000);
     }
@@ -41,6 +44,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d(TAG, "onStart: started.");
         FirebaseUser currentUser=firebaseAuth.getCurrentUser();
         if (currentUser!=null){
             Intent mainIntent=new Intent(SplashActivity.this, MainActivity.class);

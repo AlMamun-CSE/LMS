@@ -20,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static boolean setSignUpFragment = false;
 
     private FrameLayout frameLayout;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

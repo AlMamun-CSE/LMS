@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.techdsf.lms.R;
 import com.techdsf.lms.activity.MainActivity;
+import com.techdsf.lms.activity.RegisterActivity;
 
 
 public class SignInFragment extends Fragment {
@@ -88,13 +89,13 @@ public class SignInFragment extends Fragment {
             }
         });
 
-//        forgotTextView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                resetPasswordFragment=true;
-//                setFragment(new ResetPasswordFragment());
-//            }
-//        });
+        forgotTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterActivity.resetPasswordFragment=true;
+                setFragment(new ResetPasswordFragment());
+            }
+        });
 
         crossButton.setOnClickListener(new View.OnClickListener() {
             @Override
