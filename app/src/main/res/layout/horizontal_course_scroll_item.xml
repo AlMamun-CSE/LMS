@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/slider_background"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/courseImageId"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_1"/>
+
+        <TextView
+            android:id="@+id/courseTitleId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/courseImageId"
+            android:fontFamily="@font/acme"
+            android:text="Academics"
+            android:textColor="@color/green_A700"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/courseNameId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IELTS Vocabulary to Improve your Lexical Resource and Spoken"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_below="@id/courseTitleId"/>
+
+        <TextView
+            android:id="@+id/coursePriceId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="$600.00"
+            android:textColor="#0ABC5A"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/courseNameId"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coursePriceId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RatingBar
+                android:id="@+id/rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="4.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/courseRatingNumberId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@id/rating"
+                android:padding="1dp"
+                android:textSize="8dp"
+                android:text="(3)"
+                app:layout_constraintStart_toEndOf="@+id/rating"
+                tools:ignore="MissingConstraints">
+            </TextView>
+
+            <TextView
+                android:id="@+id/courseLeassonId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="1.5"
+                android:padding="2dp"
+                android:background="#F6EFAB"
+                android:text="0 Lesson"
+                android:textSize="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/courseSectionId"
+                tools:ignore="MissingConstraints">
+            </TextView>
+
+            <TextView
+                android:id="@+id/courseSectionId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
+                android:padding="2dp"
+                android:text="0 Section"
+                android:textSize="8dp"
+                android:background="#A2E1BE"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints">
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

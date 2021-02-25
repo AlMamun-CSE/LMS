@@ -1,24 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.category.CategoryFragment">
 
-    <TextView
-        android:id="@+id/text_category"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        tools:ignore="MissingConstraints">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/teal_200"
+                        android:minHeight="?attr/actionBarSize"
+                        app:titleTextColor="@android:color/white">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_arrow_back"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                        </ImageView>
+
+                        <EditText
+                            android:id="@+id/editTextSearchCategory"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@color/white"
+                            android:inputType="textPersonName"
+                            android:hint="Search Here..."
+                            android:background="@color/teal_200"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top Searches"
+                    android:layout_marginTop="10dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:textColor="#4C4949">
+                </TextView>
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/opratingSystemId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Operating Systems"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/neuralNetworkId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Neural Networks"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/designToolsId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Design Tools"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/iosDevelopmentId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="iOS Development"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/androidDevelopmentId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Android Development"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/salesId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Sales"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/gameDesignId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Game Design"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/animationId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="3D &amp; Animation"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/webDesignId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Web Design"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/artificalIntelligenceId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Artificial Intelligence"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/projectManagmentId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Project Managment"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/OperationsId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Operations"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/hardwareId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Hardware"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/managmentId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Managment"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/StrategyId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Strategy"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/dataAnalyticsId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Data &amp; Analytics"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/wordpressId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="WordPress"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pythonId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:layout_marginRight="6dp"
+                            android:text="Python"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/marketingId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/grey_border_shape"
+                            android:padding="8dp"
+                            android:text="Marketing"
+                            android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top Category"
+                    android:layout_marginTop="10dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:textColor="#4C4949"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoryRecyclerViewId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:visibility="gone">
+                </ProgressBar>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
