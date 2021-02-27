@@ -1,460 +1,467 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<FrameLayout
+        android:id="@+id/main_container"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/toolbar"
-                        android:minHeight="?attr/actionBarSize"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:titleTextColor="@android:color/white"
-                        android:background="@color/teal_200">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/action_bar_logo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:adjustViewBounds="true"
-                            android:fontFamily="@font/alike"
-                            android:gravity="center"
-                            android:text="Tech DSF eLearngin"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/toolbar"
+                            android:minHeight="?attr/actionBarSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:titleTextColor="@android:color/white"
+                            android:background="@color/teal_200">
+
+                            <TextView
+                                android:id="@+id/action_bar_logo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:adjustViewBounds="true"
+                                android:fontFamily="@font/alike"
+                                android:gravity="center"
+                                android:text="Tech DSF eLearngin"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                            </TextView>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="50dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:src="@drawable/ic_cart_white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+                            </ImageView>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="210dp"
+                            android:orientation="vertical"
+                            tools:ignore="MissingConstraints">
+
+                            <com.denzcoskun.imageslider.ImageSlider
+                                android:id="@+id/image_slider"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:iss_auto_cycle="true"
+                                app:iss_delay="0"
+                                app:iss_period="1000" />
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/container2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/slider_background"
+                            app:layout_constraintBottom_toTopOf="@+id/top_category"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                        </TextView>
+                            <TextView
+                                android:id="@+id/horizontal_scroll_layout_tittle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="8dp"
+                                android:text="Popular Category"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_description"
+                                app:layout_constraintStart_toStartOf="@+id/horizontal_scroll_layout_description"
+                                tools:layout_editor_absoluteY="3dp" />
+
+                            <TextView
+                                android:id="@+id/horizontal_scroll_layout_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:paddingLeft="8dp"
+                                android:text="Select Your Category"
+                                android:textColor="#000000"
+                                android:textSize="10sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_layout_tittle" />
+
+                            <Button
+                                android:id="@+id/horizontal_scroll_layout_viewAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginRight="8dp"
+                                android:backgroundTint="@color/red_900"
+                                android:paddingRight="8dp"
+                                android:text="See All"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_tittle"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_tittle" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/top_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/container2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/blue_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic_action_name"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Graphic Design"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/orange_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image2"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic__web_design"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Web Design"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/green_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image3"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic_anroid"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Android &amp; iOS"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/blue_grey_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image4"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic_action_name"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Cyber Security"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/amber_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image5"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic__web_design"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Photoshop"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/pink_background"
+                                        android:gravity="center"
+                                        android:padding="15dp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/profile_image6"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:background="#D9F0F3"
+                                            android:src="@drawable/ic_anroid"
+                                            app:civ_border_color="#FBF8F8"
+                                            app:civ_border_width="2dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="8dp"
+                                            android:text="Digital Market"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/container3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="25dp"
+                            android:background="@drawable/slider_background"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/top_category">
+
+                            <TextView
+                                android:id="@+id/horizontal_scroll_layout_course_titleId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="8dp"
+                                android:text="Our Popular Course"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_description2"
+                                app:layout_constraintStart_toStartOf="@+id/horizontal_scroll_layout_description2"
+                                tools:layout_editor_absoluteY="3dp" />
+
+                            <TextView
+                                android:id="@+id/horizontal_scroll_layout_description2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:paddingLeft="8dp"
+                                android:text="Select Your Course"
+                                android:textColor="#000000"
+                                android:textSize="10sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_layout_course_titleId" />
+
+                            <Button
+                                android:id="@+id/horizontal_scroll_layout_view_allId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginRight="8dp"
+                                android:backgroundTint="@color/red_900"
+                                android:paddingRight="8dp"
+                                android:text="See All"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_course_titleId"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_course_titleId" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/course_recyclerView_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+                        </androidx.recyclerview.widget.RecyclerView>
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="50dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginRight="15dp"
-                            android:src="@drawable/ic_cart_white"
+                            android:id="@+id/no_internet_connection"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></ImageView>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="210dp"
-                        android:orientation="vertical"
-                        tools:ignore="MissingConstraints">
-
-                        <com.denzcoskun.imageslider.ImageSlider
-                            android:id="@+id/image_slider"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:iss_auto_cycle="true"
-                            app:iss_delay="0"
-                            app:iss_period="1000" />
 
                     </LinearLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/container2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:background="@drawable/slider_background"
-                        app:layout_constraintBottom_toTopOf="@+id/top_category"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                        <TextView
-                            android:id="@+id/horizontal_scroll_layout_tittle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="8dp"
-                            android:text="Popular Category"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_description"
-                            app:layout_constraintStart_toStartOf="@+id/horizontal_scroll_layout_description"
-                            tools:layout_editor_absoluteY="3dp" />
-
-                        <TextView
-                            android:id="@+id/horizontal_scroll_layout_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:paddingLeft="8dp"
-                            android:text="Select Your Category"
-                            android:textColor="#000000"
-                            android:textSize="10sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_layout_tittle" />
-
-                        <Button
-                            android:id="@+id/horizontal_scroll_layout_viewAll"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
-                            android:backgroundTint="@color/red_900"
-                            android:paddingRight="8dp"
-                            android:text="See All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_tittle"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_tittle" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <LinearLayout
-                        android:id="@+id/top_category"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/container2">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="5dp"
-                                android:weightSum="2">
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/blue_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic_action_name"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Graphic Design"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/orange_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image2"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic__web_design"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Web Design"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="5dp"
-                                android:weightSum="2">
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/green_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image3"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic_anroid"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Android &amp; iOS"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/blue_grey_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image4"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic_action_name"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Cyber Security"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="5dp"
-                                android:weightSum="2">
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/amber_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image5"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic__web_design"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Photoshop"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/pink_background"
-                                    android:gravity="center"
-                                    android:padding="15dp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image6"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="#D9F0F3"
-                                        android:src="@drawable/ic_anroid"
-                                        app:civ_border_color="#FBF8F8"
-                                        app:civ_border_width="2dp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
-                                        android:text="Digital Market"
-                                        android:textColor="@color/white"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/container3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="25dp"
-                        android:background="@drawable/slider_background"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/top_category">
-
-                        <TextView
-                            android:id="@+id/horizontal_scroll_layout_course_titleId"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="8dp"
-                            android:text="Our Popular Course"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_description2"
-                            app:layout_constraintStart_toStartOf="@+id/horizontal_scroll_layout_description2"
-                            tools:layout_editor_absoluteY="3dp" />
-
-                        <TextView
-                            android:id="@+id/horizontal_scroll_layout_description2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:paddingLeft="8dp"
-                            android:text="Select Your Course"
-                            android:textColor="#000000"
-                            android:textSize="10sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_layout_course_titleId" />
-
-                        <Button
-                            android:id="@+id/horizontal_scroll_layout_view_allId"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
-                            android:backgroundTint="@color/red_900"
-                            android:paddingRight="8dp"
-                            android:text="See All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="@+id/horizontal_scroll_layout_course_titleId"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/horizontal_scroll_layout_course_titleId" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/course_recyclerView_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <ImageView
-                        android:id="@+id/no_internet_connection"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
 
                 </LinearLayout>
 
-            </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

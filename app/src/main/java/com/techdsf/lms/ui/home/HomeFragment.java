@@ -1,15 +1,24 @@
 package com.techdsf.lms.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,17 +26,22 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.techdsf.lms.R;
+import com.techdsf.lms.activity.CourseCategoryActivity;
+import com.techdsf.lms.ui.category.CategoryFragment;
+import com.techdsf.lms.ui.courses.CoursesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
     private HomeViewModel homeViewModel;
 
     private TextView courseTitle;
     private Button viewAllButton;
     private RecyclerView recyclerView;
+    private Button viewAllPopularCategory;
+    private FrameLayout frameLayout;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,7 +54,20 @@ public class HomeFragment extends Fragment {
         courseTitle = root.findViewById(R.id.horizontal_scroll_layout_course_titleId);
         viewAllButton = root.findViewById(R.id.horizontal_scroll_layout_view_allId);
         recyclerView = root.findViewById(R.id.course_recyclerView_id);
+        viewAllPopularCategory = root.findViewById(R.id.horizontal_scroll_layout_viewAll);
+        frameLayout = root.findViewById(R.id.main_container);
 
+
+
+        viewAllPopularCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new CategoryFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.categoryContainer, fragment);
+                transaction.commit();
+            }
+        });
         recyclerViewFeatured();
 
 

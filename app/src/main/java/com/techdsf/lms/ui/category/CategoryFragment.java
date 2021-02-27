@@ -1,29 +1,30 @@
 package com.techdsf.lms.ui.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.techdsf.lms.R;
-import com.techdsf.lms.activity.MainActivity;
-import com.techdsf.lms.ui.home.Horizontal_Course_Adapter;
-import com.techdsf.lms.ui.home.Horizontal_Course_Model;
+import com.techdsf.lms.activity.CourseCategoryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class CategoryFragment extends Fragment {
     private static final String TAG = "CategoryFragment";
 
     private RecyclerView recyclerView;
-    private EditText editTextSearch;
+    private Toolbar toolbar;
 
     private CategoryViewModel categoryViewModel;
     private boolean isScrolling = false;
@@ -41,12 +42,42 @@ public class CategoryFragment extends Fragment {
     List<CategoryItemModel> categoryItemModelList;
     CategoryItemListAdapter adapter;
 
+
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //TODO: Step 4 of 4: Finally call getTag() on the view.
+            // This viewHolder will have all required values.
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            // viewHolder.getItemId();
+            // viewHolder.getItemViewType();
+            // viewHolder.itemView;
+            CategoryItemModel thisItem = categoryItemModelList.get(position);
+            Toast.makeText(getActivity(), "You Clicked: " + thisItem.getCategoryName(), Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getActivity().getApplication(),CourseCategoryActivity.class);
+            startActivity(intent);
+
+        }
+    };
+
+
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_category, container, false);
+        toolbar = root.findViewById(R.id.appbarlayout_tool_bar);
+
+        setHasOptionsMenu(true);
+        getActivity().setTitle("");
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
         recyclerView = root.findViewById(R.id.categoryRecyclerViewId);
-        editTextSearch = root.findViewById(R.id.editTextSearchCategory);
         manager = new LinearLayoutManager(getContext());
 
         recyclerViewFeatured();
@@ -87,6 +118,10 @@ public class CategoryFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        //TODO: Step 1 of 4: Create and set OnItemClickListener to the adapter.
+        adapter.setOnItemClickListener(onItemClickListener);
+
+
 //        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -113,21 +148,48 @@ public class CategoryFragment extends Fragment {
 //        });
     }
 
-    private void fetchData() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 7; i++) {
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
-                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//    private void fetchData() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                for (int i = 0; i < 7; i++) {
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//                    categoryItemModelList.add(new CategoryItemModel(R.drawable.ic_anroid, "Management"));
+//
+//                    adapter.notifyDataSetChanged();
+//                }
+//            }
+//        }, 3000);
+//    }
 
-                    adapter.notifyDataSetChanged();
-                }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.main, menu);
+        MenuItem item=menu.findItem(R.id.search_menu);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |  MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        item.setIcon(R.drawable.ic_baseline_search_24);
+
+        SearchView searchView=(SearchView)item.getActionView();
+        item.collapseActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
-        }, 3000);
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
