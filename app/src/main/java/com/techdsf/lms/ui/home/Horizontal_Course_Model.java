@@ -5,6 +5,15 @@ import android.widget.TextView;
 
 public class Horizontal_Course_Model {
 
+    public static final int HORIZONTAL_LAYOUT = 0;
+    public static final int VERTICAL_LAYOUT = 1;
+
+    private int viewType;
+
+    //horizontal layout
+    private String lossCoursePrice;
+
+    //vertical layout
     private int courseImage;
     private String courseTitle;
     private String courseName;
@@ -13,8 +22,22 @@ public class Horizontal_Course_Model {
     private String courseLessonNumber;
     private String courseSectionNumber;
 
-    public Horizontal_Course_Model(int courseImage, String courseTitle, String courseName, String coursePrice
+    public Horizontal_Course_Model(int viewType,int courseImage, String courseTitle, String courseName, String coursePrice,String lossCoursePrice
+            ,String courseRatingNumber,String courseLessonNumber,String courseSectionNumber) {
+        this.viewType = viewType;
+        this.courseImage = courseImage;
+        this.courseTitle = courseTitle;
+        this.courseName = courseName;
+        this.coursePrice = coursePrice;
+        this.lossCoursePrice = lossCoursePrice;
+        this.courseRatingNumber = courseRatingNumber;
+        this.courseLessonNumber = courseLessonNumber;
+        this.courseSectionNumber = courseSectionNumber;
+    }
+
+    public Horizontal_Course_Model(int viewType,int courseImage, String courseTitle, String courseName, String coursePrice
     ,String courseRatingNumber,String courseLessonNumber,String courseSectionNumber) {
+        this.viewType = viewType;
         this.courseImage = courseImage;
         this.courseTitle = courseTitle;
         this.courseName = courseName;
@@ -22,6 +45,22 @@ public class Horizontal_Course_Model {
         this.courseRatingNumber = courseRatingNumber;
         this.courseLessonNumber = courseLessonNumber;
         this.courseSectionNumber = courseSectionNumber;
+    }
+
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
+    }
+
+    public String getLossCoursePrice() {
+        return lossCoursePrice;
+    }
+
+    public void setLossCoursePrice(String lossCoursePrice) {
+        this.lossCoursePrice = lossCoursePrice;
     }
 
     public String getCourseRatingNumber() {

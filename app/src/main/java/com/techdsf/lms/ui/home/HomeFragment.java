@@ -1,37 +1,32 @@
 package com.techdsf.lms.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.techdsf.lms.R;
-import com.techdsf.lms.activity.CourseCategoryActivity;
+import com.techdsf.lms.activity.MainActivity;
 import com.techdsf.lms.ui.category.CategoryFragment;
-import com.techdsf.lms.ui.courses.CoursesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.techdsf.lms.ui.home.Horizontal_Course_Model.HORIZONTAL_LAYOUT;
 
 public class HomeFragment extends Fragment{
 
@@ -42,6 +37,8 @@ public class HomeFragment extends Fragment{
     private RecyclerView recyclerView;
     private Button viewAllPopularCategory;
     private FrameLayout frameLayout;
+    public static List<Horizontal_Course_Model>horizontalCourseModelList;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,15 +54,18 @@ public class HomeFragment extends Fragment{
         viewAllPopularCategory = root.findViewById(R.id.horizontal_scroll_layout_viewAll);
         frameLayout = root.findViewById(R.id.main_container);
 
+        BottomNavigationView navigation = root.findViewById(R.id.nav_view);
 
 
         viewAllPopularCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new CategoryFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.categoryContainer, fragment);
-                transaction.commit();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container,fragment);
+                fragmentTransaction.commitNow();
+
+                MainActivity.navigation.setSelectedItemId(R.id.navigation_category);
             }
         });
         recyclerViewFeatured();
@@ -84,14 +84,13 @@ public class HomeFragment extends Fragment{
     }
 
     private void recyclerViewFeatured() {
-        List<Horizontal_Course_Model>horizontalCourseModelList = new ArrayList<>();
+        horizontalCourseModelList = new ArrayList<>();
 
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_2,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(24)","21 Lesson","121 Section"));
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_1,"Productivity","Android Development","$600.00","(24)","21 Lesson","121 Section"));
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_3,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(54)","11 Lesson","101 Section"));
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_1,"Productivity","Android Development","$700.00","(24)","21 Lesson","121 Section"));
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_4,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(336)","36 Lesson","150 Section"));
-        horizontalCourseModelList.add(new Horizontal_Course_Model(R.drawable.image_2,"Productivity","Android Development","$800.00","(24)","21 Lesson","121 Section"));
+        horizontalCourseModelList.add(new Horizontal_Course_Model(HORIZONTAL_LAYOUT,R.drawable.image_2,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(24)","21 Lesson","121 Section"));
+        horizontalCourseModelList.add(new Horizontal_Course_Model(HORIZONTAL_LAYOUT,R.drawable.image_1,"Productivity","Android Development","$600.00","(24)","21 Lesson","121 Section"));
+        horizontalCourseModelList.add(new Horizontal_Course_Model(HORIZONTAL_LAYOUT,R.drawable.image_3,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(54)","11 Lesson","101 Section"));
+        horizontalCourseModelList.add(new Horizontal_Course_Model(HORIZONTAL_LAYOUT,R.drawable.image_1,"Productivity","Android Development","$700.00","(24)","21 Lesson","121 Section"));
+        horizontalCourseModelList.add(new Horizontal_Course_Model(HORIZONTAL_LAYOUT,R.drawable.image_4,"Academic","IELTS Vocabulary to Improve your Lexical Resource and Spoken","$500.00","(336)","36 Lesson","150 Section"));
 
 
         Horizontal_Course_Adapter adapter = new Horizontal_Course_Adapter(horizontalCourseModelList);
