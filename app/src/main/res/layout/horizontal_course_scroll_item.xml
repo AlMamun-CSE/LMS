@@ -6,8 +6,10 @@
     android:background="@drawable/slider_background"
     android:layout_width="300dp"
     android:layout_height="300dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="2dp"
-    app:cardElevation="8dp">
+    android:padding="20dp"
+    app:cardElevation="10dp">
 
     <RelativeLayout
         android:id="@+id/relLayout1"
@@ -68,7 +70,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <RatingBar
-                android:id="@+id/rating"
+                android:id="@+id/cDCoursesRatingId"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,11 +86,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_toRightOf="@id/rating"
+                android:layout_toRightOf="@id/cDCoursesRatingId"
                 android:padding="1dp"
                 android:textSize="8dp"
                 android:text="(3)"
-                app:layout_constraintStart_toEndOf="@+id/rating"
+                app:layout_constraintStart_toEndOf="@+id/cDCoursesRatingId"
                 tools:ignore="MissingConstraints">
             </TextView>
 

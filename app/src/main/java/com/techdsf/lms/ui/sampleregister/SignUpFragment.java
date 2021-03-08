@@ -20,8 +20,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.techdsf.lms.R;
-import com.techdsf.lms.activity.MainActivity;
+import com.techdsf.lms.Activities.MainActivity;
 
 import java.util.HashMap;
 import java.util.Map;

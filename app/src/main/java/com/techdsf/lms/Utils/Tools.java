@@ -1,4 +1,4 @@
-package com.techdsf.lms.utils;
+package com.techdsf.lms.Utils;
 
 import android.app.Activity;
 import android.os.Build;

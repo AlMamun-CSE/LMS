@@ -1,5 +1,7 @@
 package com.techdsf.lms.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.techdsf.lms.R;
+import com.techdsf.lms.ui.courses.CourseDetails;
 
 import java.util.List;
 
@@ -20,10 +23,12 @@ import static com.techdsf.lms.ui.home.Horizontal_Course_Model.VERTICAL_LAYOUT;
 
 public class Horizontal_Course_Adapter extends RecyclerView.Adapter{
 
+    private Context context;
     private List<Horizontal_Course_Model>horizontal_course_modelList;
     private int lastPosition = -1;
 
-    public Horizontal_Course_Adapter(List<Horizontal_Course_Model> horizontal_course_modelList) {
+    public Horizontal_Course_Adapter(Context context, List<Horizontal_Course_Model> horizontal_course_modelList) {
+        this.context = context;
         this.horizontal_course_modelList = horizontal_course_modelList;
     }
 
@@ -90,15 +95,30 @@ public class Horizontal_Course_Adapter extends RecyclerView.Adapter{
                 ((VerticalView)viewHolder).setCourseRating2(ratingNum2);
                 ((VerticalView)viewHolder).setCourseLesson2(lessonNum2);
                 ((VerticalView)viewHolder).setCourseSection2(sectionNum2);
+
+                if (lastPosition < position){
+                    Animation animation = AnimationUtils.loadAnimation(viewHolder.itemView.getContext(), android.R.anim.fade_in);
+                    viewHolder.itemView.setAnimation(animation);
+                }
+
                 break;
             default:
                 return;
+
         }
 
         if (lastPosition < position){
             Animation animation = AnimationUtils.loadAnimation(viewHolder.itemView.getContext(), android.R.anim.fade_in);
             viewHolder.itemView.setAnimation(animation);
         }
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CourseDetails.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.techdsf.lms.activity;
+package com.techdsf.lms.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

@@ -40,7 +40,7 @@
                         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
                         <ImageView
-                            android:id="@+id/imageView2"
+                            android:id="@+id/coursesDetailsBackArrowId"
                             android:layout_width="40dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="20dp"

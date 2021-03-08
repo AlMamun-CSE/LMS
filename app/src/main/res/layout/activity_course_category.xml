@@ -34,7 +34,7 @@
                     android:background="@color/teal_200">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/coursesDetailsBackArrowId"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="20dp"
@@ -56,14 +56,14 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintEnd_toStartOf="@+id/coursesDetalsCartId"
+                        app:layout_constraintStart_toEndOf="@+id/coursesDetailsBackArrowId"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </TextView>
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/coursesDetalsCartId"
                         android:layout_width="30dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="15dp"

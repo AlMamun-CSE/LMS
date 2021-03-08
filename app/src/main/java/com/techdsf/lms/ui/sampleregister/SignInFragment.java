@@ -19,8 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +27,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.techdsf.lms.R;
-import com.techdsf.lms.activity.MainActivity;
-import com.techdsf.lms.activity.RegisterActivity;
+import com.techdsf.lms.Activities.MainActivity;
+import com.techdsf.lms.Activities.RegisterActivity;
 
 
 public class SignInFragment extends Fragment {
